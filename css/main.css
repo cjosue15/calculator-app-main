@@ -35,7 +35,7 @@ body {
   background-color: var(--screen-background);
   min-height: 110px;
   border-radius: var(--radius);
-  color: #fff;
+  color: var(--key-background-orange);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -72,6 +72,14 @@ body {
   line-height: 50px;
   cursor: pointer;
   box-shadow: 0px 4px 0px 0px var(--key-shadow-orange);
+  transition: all 0.1s ease-in-out;
+  user-select: none;
+}
+
+.keypad .key:active {
+  box-shadow: var(--button-shadow-active);
+  transform: translateY(2px);
+  opacity: 0.8;
 }
 
 .key.clear {
