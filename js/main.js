@@ -45,15 +45,18 @@ keypad$.addEventListener('click', ({ target } = e) => {
     }
   }
 
-  operationText$.innerText = !signo ? firstOperation || 0 : secondOperation || 0;
-  result$.innerText = `${firstOperation || ''} ${signo || ''} ${secondOperation || ''}`;
+  operationText$.innerText = !signo ? printFormat(firstOperation) : printFormat(secondOperation);
+  result$.innerText = `${printFormat(firstOperation)} ${signo || ''} ${printFormat(secondOperation)}`;
 });
+
+const printFormat = (text) => text.replace(/\b(0(?!\b))+/g, '');
 
 delButton$.addEventListener('click', () => {
   const numbers = [...firstOperation.split(''), signo, ...secondOperation.split('')];
 
+  if (numbers.length === 0) return;
+
   if (operationKeys.includes(numbers[numbers.length - 1])) {
-    console.log('Imprimir');
     signo = null;
   } else {
     if (!signo) {
