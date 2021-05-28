@@ -33,7 +33,7 @@ body {
 
 .result-box {
   background-color: var(--screen-background);
-  min-height: 110px;
+  min-height: 100px;
   border-radius: var(--radius);
   color: var(--key-background-orange);
   display: flex;
