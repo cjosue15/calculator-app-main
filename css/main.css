@@ -15,6 +15,77 @@
 
   --key-background-orange: hsl(30, 25%, 89%);
   --key-shadow-orange: hsl(28, 16%, 65%);
+
+  /*text*/
+  --operation-color: hsl(221, 14%, 31%);
+  --key-color: #ffffff;
+}
+
+body.theme-1 {
+  /* THEME 1 */
+  --toggle-keypad-background: hsl(223, 31%, 20%);
+  --screen-background: hsl(224, 36%, 15%);
+  --main-background: hsl(222, 26%, 31%);
+
+  /* keys */
+  --key-background-blue: hsl(225, 21%, 49%);
+  --key-shadow-blue: hsl(224, 28%, 35%);
+
+  --key-background-toggle: hsl(6, 63%, 50%);
+  --key-shadow: hsl(6, 70%, 34%);
+
+  --key-background-orange: hsl(30, 25%, 89%);
+  --key-shadow-orange: hsl(28, 16%, 65%);
+
+  /*text*/
+  --operation-color: hsl(221, 14%, 31%);
+  --key-color: #ffffff;
+}
+
+body.theme-2 {
+  /* THEME 1 */
+  --toggle-keypad-background: hsl(0, 5%, 81%);
+  --screen-background: hsl(0, 0%, 93%);
+  --main-background: hsl(0, 0%, 90%);
+
+  /* keys */
+  --key-background-blue: hsl(185, 42%, 37%);
+  --key-shadow-blue: hsl(185, 58%, 25%);
+
+  --key-background-toggle: hsl(25, 98%, 40%);
+  --key-shadow: hsl(25, 99%, 27%);
+
+  --key-background-orange: hsl(45, 7%, 89%);
+  --key-shadow-orange: hsl(35, 11%, 61%);
+
+  /*text*/
+  --operation-color: hsl(60, 10%, 19%);
+  --key-color: hsl(0, 0, 100%);
+}
+
+body.theme-3 {
+  /* THEME 1 */
+  --toggle-keypad-background: hsl(268, 71%, 12%);
+  --screen-background: hsl(268, 71%, 12%);
+  --main-background: hsl(268, 75%, 9%);
+
+  /* keys */
+  --key-background-blue: hsl(281, 89%, 26%);
+  --key-shadow-blue: hsl(285, 91%, 52%);
+
+  --key-background-toggle: hsl(176, 100%, 44%);
+  --key-shadow: hsl(177, 92%, 70%);
+
+  --key-background-orange: hsl(268, 47%, 21%);
+  --key-shadow-orange: hsl(290, 70%, 36%);
+
+  /*text*/
+  --operation-color: hsl(52, 100%, 62%);
+  --key-color: hsl(52, 100%, 62%);
+}
+
+* {
+  transition: all 0.2s ease-in;
 }
 
 body {
@@ -27,6 +98,87 @@ body {
   align-items: center;
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h1 {
+  color: var(--key-color);
+}
+
+.header .switch {
+  width: 72px;
+  height: 45px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-switch {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.content-switch span {
+  margin-right: 20px;
+  color: var(--key-color);
+}
+
+.switch label {
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--key-color);
+  text-align: center;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.switch input {
+  opacity: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+}
+
+.switch input:nth-of-type(1):checked ~ .toggle::after {
+  left: 8px;
+}
+
+.switch input:nth-of-type(2):checked ~ .toggle::after {
+  left: calc(50% - 8px);
+}
+
+.switch input:nth-of-type(3):checked ~ .toggle::after {
+  left: calc(100% - 24px);
+}
+
+.toggle {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  height: 25px;
+  background: var(--toggle-keypad-background);
+  border-radius: 30px;
+}
+
+.toggle::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-color: var(--key-background-toggle);
+  border-radius: 50%;
+  top: calc(50% - 8px);
+  left: 5px;
+}
+
 .calculator {
   width: 450px;
 }
@@ -35,7 +187,7 @@ body {
   background-color: var(--screen-background);
   min-height: 100px;
   border-radius: var(--radius);
-  color: var(--key-background-orange);
+  color: var(--key-color);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -67,6 +219,7 @@ body {
   text-align: center;
   height: 50px;
   border-radius: 8px;
+  color: var(--operation-color);
   background-color: var(--key-background-orange);
   font-size: 25px;
   line-height: 50px;
@@ -95,6 +248,7 @@ body {
 }
 
 .key.equal {
+  color: var(--key-color);
   background-color: var(--key-background-toggle);
   grid-column: 3/5;
   box-shadow: 0px 4px 0px 0px var(--key-shadow);

@@ -5,9 +5,11 @@ const resetButton$ = document.querySelector('.reset');
 const delButton$ = document.querySelector('.del');
 const result$ = document.querySelector('#result');
 const resultBox$ = document.querySelector('.result-box');
+const switch$ = document.querySelector('.switch');
+const body$ = document.querySelector('body');
 const operationKeys = ['+', '-', 'x', '/'];
 const objOperationKeys = {
-  x: ' x',
+  x: 'x',
   '-': '-',
   '+': '+',
   '/': '/',
@@ -16,6 +18,29 @@ let firstOperation = '';
 let secondOperation = '';
 operationText$.innerText = 0;
 let signo = null;
+
+switch$.addEventListener('click', (e) => {
+  const value = e.target.value;
+  if (value) {
+    changeTheme(value);
+  }
+});
+
+const changeTheme = (value) => {
+  body$.className = '';
+
+  switch (Number(value)) {
+    case 1:
+      body$.classList.add('theme-1');
+      break;
+    case 2:
+      body$.classList.add('theme-2');
+      break;
+    default:
+      body$.classList.add('theme-3');
+      break;
+  }
+};
 
 const resetAll = (result) => {
   firstOperation = '';
@@ -93,7 +118,7 @@ equalButton$.addEventListener('click', () => {
       result = Number(firstOperation) * Number(secondOperation);
       break;
     default:
-    case 'x':
+    case '/':
       result = Number(firstOperation) / Number(secondOperation);
       break;
   }
